@@ -449,4 +449,22 @@ table {
   }
 }
 
-/* -----------  __ --------------- */
+/* -----------  home  --------------- */
+
+.home1{
+	margin-top: 2em;
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+}
+.totalEmployees, .leaveOfEmployees{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+}
+.leaveOfEmployees{}
+.leaveOfEmployees p:nth-child(1){
+	color: red;
+}

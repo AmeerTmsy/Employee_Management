@@ -9,7 +9,8 @@ import ErrorPage from './error-page';
 import { Provider } from 'react-redux';
 import store from './app/store';
 
-import Root from "./routes/root";
+
+import Root, {loader as rootLoader} from "./routes/root";
 import Download from './routes/download';
 import Enterinfo from './routes/enterinfo';
 import Home from './routes/home';
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+    loader: rootLoader,
     children: [
       {
         path: "/",
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}/>
     </Provider>
   </StrictMode>,
 )

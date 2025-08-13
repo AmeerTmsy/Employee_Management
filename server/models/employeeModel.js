@@ -36,6 +36,13 @@ const employeeSchema = new mongoose.Schema({
     conditionsOfEmployment: [String],
     dateOfJoining: String,
     offerAcceptanceDate: String,
+    password: String,
+    role: {
+        type: String,
+        enum: ['employee', 'admin'], // Directly define enum values here
+        default: 'employee',
+        required: true
+    },
 });
 
 const Employee = mongoose.model('Employee', employeeSchema);

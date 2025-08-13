@@ -10,9 +10,9 @@ function Employees(props) {
         const fetchEmployees = async () => {
             try {
                 const url = `http://localhost:3000/employees`;
-                const response = await axios.get(url);
+                const response = await axios.get(url, { withCredentials: true });
                 setEMP(response.data.employees);
-                // console.log(response.data.employees); // API response data
+                console.log(response.data.employees); // API response data
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
