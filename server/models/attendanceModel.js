@@ -1,20 +1,21 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const attendanceSchema = new mongoose.Schema({
     employeeId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Employee',
         required: true,
+    },
+    employeeName: {
+        type: String,
+        required: true
     },
     records: [
         {
-            date: {
-                type: Date,
-                required: true,
-            },
+            date: String,
             status: {
                 type: String,
-                enum: ['P', 'HP', 'X', 'L'],
-                required: true,
+                enum: ['P', 'HP', 'X', 'L']
             }
         },
     ],
@@ -38,7 +39,7 @@ const attendanceSchema = new mongoose.Schema({
 
 attendanceSchema.pre('save', function (next) {
     const counts = { P: 0, HP: 0, X: 0, L: 0 };
-    this.records.forEach(record => {
+    this.records?.forEach(record => {
         if (counts.hasOwnProperty(record.status)) {
             counts[record.status]++;
         }

@@ -7,6 +7,7 @@ const port = 3000;
 
 const EmployeeRoute = require('./routes/employeeRoute');
 const Auth = require('./routes/authRoute');
+const Attendance = require('./routes/attendanceRoute');
 const connectDB = require('./config/db');
 
 app.use(cookieParser());
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 app.use('/employees', EmployeeRoute)
 app.use('/auth', Auth)
+app.use('/attendance', Attendance)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

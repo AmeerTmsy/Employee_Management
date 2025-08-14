@@ -20,6 +20,7 @@ const getAllEmployees = async (req, res) => {
 const getEmployeeById = async (req, res) => {
     res.send('Get Emploee by id')
 }
+
 const getEmployeeCount = async (req, res) => {
     try {
         const employeesCount = await Employee.countDocuments({});

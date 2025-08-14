@@ -64,6 +64,9 @@ function Presence(props) {
             }
         }
     }
+    const newEmployeeAddtoAttendance = () => {
+        console.log('newEmployeeAddtoAttendance');
+    }
     const handleChange = (employeeId, name, day, value) => {
         const dateObj = new Date(year, monthNumber - 1, Number(day) + 1);
         const dateString = dateObj.toISOString().split('T')[0];
@@ -77,12 +80,19 @@ function Presence(props) {
 
     return (
         <div className="presence-container">
-            <h1 className="presence-title">Attendance</h1>
-            <h4 style={{textAlign: 'center'}}>{currentYear}</h4>
-            <div className="attendance-month-select">
-                <div onClick={() => handleMonthChange('prev')} className='prev-month'><i className="ri-arrow-drop-left-line"></i></div>
-                <div>{monthName}</div>
-                <div onClick={() => handleMonthChange('next')} className={`next-month ${currentYear === todayYear && currentMonth === todayMonth ? 'next-month-disable' : ''}`}><i className="ri-arrow-drop-right-line"></i></div>
+            <div className="presence-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <h1>Attendance</h1>
+                <div>
+                    <h4 style={{ textAlign: 'center' }}>{currentYear}</h4>
+                    <div className="attendance-month-select">
+                        <div onClick={() => handleMonthChange('prev')} className='prev-month'><i className="ri-arrow-drop-left-line"></i></div>
+                        <div>{monthName}</div>
+                        <div onClick={() => handleMonthChange('next')} className={`next-month ${currentYear === todayYear && currentMonth === todayMonth ? 'next-month-disable' : ''}`}><i className="ri-arrow-drop-right-line"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <button onClick={newEmployeeAddtoAttendance} style={{ padding: '0.5em 2em' }}>Add +</button>
+                </div>
             </div>
 
             <div className="table-scroll-container">

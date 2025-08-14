@@ -207,12 +207,14 @@ table {
 
 /* Title */
 .presence-title {
-	padding-top: 3em;
+	padding-top: 4em;
 	margin-bottom: 0.5em;
 	text-align: center;
+	/* margin-bottom: 0.1em; */
+}
+.presence-title h1 {
 	font-size: 1.8rem;
 	font-weight: 600;
-	/* margin-bottom: 0.1em; */
 }
 
 /* Scroll container */
@@ -275,7 +277,6 @@ table {
 }
 
 .attendance-month-select {
-	margin-bottom: 1em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
