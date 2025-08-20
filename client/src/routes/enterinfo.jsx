@@ -8,11 +8,10 @@ import axios from 'axios';
 function Enterinfo(props) {
     const currentDate = new Date();
     const currentMonth = monthNames[currentDate.getMonth()];
-    // const day = currentDate.getDate();
-    const uniqueId = crypto.randomUUID();
+    
     const [info, setInfo] = useState({
         // 1. Basic Info
-        employeeId: uniqueId,
+        employeeId: '',
         name: '',
         email: '',
         designation: '',

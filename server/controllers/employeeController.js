@@ -1,3 +1,4 @@
+const Attendance = require("../models/attendanceModel");
 const Employee = require("../models/employeeModel")
 
 const getAllEmployees = async (req, res) => {
@@ -43,6 +44,9 @@ const createEmployee = async (req, res) => {
     try {
         const newEmployee = new Employee(req.body);
         await newEmployee.save();
+        // creating attendance model for the employee
+        const attendance = new Attendance({employeeId: newEmployee._id, employeeName: newEmployee.name});
+        await attendance.save();
         console.log("newEmployee: ", newEmployee);
 
         return res.status(200).json({

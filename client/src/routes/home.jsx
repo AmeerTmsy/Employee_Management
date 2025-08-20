@@ -1,42 +1,67 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-import employeeAttendanceData from '../data/empAttendence'
+import { Link } from 'react-router-dom';
 
 function Home(props) {
-
-    const [employeesCount, setEmployeesCount] = useState(0);
-    const [leaveCount, setLeaveCount] = useState(0);
     const today = new Date().toISOString().split('T')[0];
-
+    const [attendanceList, setAttendanceList] = useState([]);
+    const [presence, setPresence] = useState(0);
+    const [leaves, setLeaves] = useState(0);
+    const [absence, setAbsence] = useState(0);
 
     useEffect(() => {
-        let absantCount = 0;
-        employeeAttendanceData?.map(emp => {
-            // if (emp.records.date === today && emp.records.status === 'L') 
-            emp.records.map(record => record.date === today && record.status === 'L' && absantCount++)
-        })
-        setLeaveCount(absantCount)
-
-    }, [today, employeeAttendanceData])
-    useEffect(() => {
-        axios.get(`http://localhost:3000/employees/count`, { withCredentials: true })
-            .then(res => setEmployeesCount(res.data.employeesCount))
-            .catch(error => console.log(error))
+        const fetchAttendanceList = async () => {
+            try {
+                const url = `http://localhost:3000/attendance`;
+                const response = await axios.get(url, { withCredentials: true });
+                setAttendanceList(response?.data.attendance);
+            } catch (error) {
+                console.error('Error fetching attendance data:', error);
+            }
+        };
+        fetchAttendanceList();
     }, [])
+
+    useEffect(() => {
+        setPresence(0);
+        setLeaves(0);
+        setAbsence(0);
+        if (attendanceList) attendanceList.map(att =>
+            att.records.map(day =>{
+                day.date === today && day.status === 'P' && setPresence(pre => pre += 1);
+                day.date === today && day.status === 'L' && setLeaves(pre => pre += 1);
+                day.date === today && day.status === 'X' && setAbsence(pre => pre += 1);
+
+            })
+        )
+    }, [attendanceList])
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
             <h1 style={{ marginTop: '5em', textAlign: 'center' }}>Welcome Back</h1>
             <div className='home1'>
-                <div className='totalEmployees'>
-                    <p>{employeesCount}</p>
+                <Link to={'/employees'} className='totalEmployees'>
+                    <p>{attendanceList?.length}</p>
                     <p>total number of employees</p>
-                </div>
-                <div className='leaveOfEmployees'>
-                    <p>{leaveCount}</p>
-                    <p>total number of leaves</p>
-                </div>
+                </Link>
+                <Link to={'/attendance'} className='leaveOfEmployees'>
+                    <div>
+                        <p>Today</p>
+                    </div>
+                    <div>
+                        <p className='presenceStyle'>{presence}</p>
+                        <p>Presence</p>
+                    </div>
+                    <div>
+                        <p className='leavesStyle'>{leaves}</p>
+                        <p>Leaves</p>
+                    </div>
+                    <div>
+                        <p className='absenceStyle'>{absence}</p>
+                        <p>Absence</p>
+                    </div>
+                </Link>
             </div>
         </div>
     );

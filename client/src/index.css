@@ -135,6 +135,23 @@ q:after {
 	content: none;
 }
 
+/* ////////////-- Navigation -- ////////////// */
+.active-link {
+	color: white;
+	/* font-weight: bold; */
+	/* border-bottom: 2px solid white; */
+	transition: all 500ms ease-in-out;
+}
+
+.inactive-link {
+	color: gray;
+}
+
+.inactive-link:hover {
+	color: black;
+}
+
+/* ////////////-- Attendance -- ////////////// */
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -207,12 +224,9 @@ table {
 
 /* Title */
 .presence-title {
-	padding-top: 4em;
+	padding-top: 2.5em;
 	margin-bottom: 0.5em;
 	text-align: center;
-	/* margin-bottom: 0.1em; */
-}
-.presence-title h1 {
 	font-size: 1.8rem;
 	font-weight: 600;
 }
@@ -281,6 +295,7 @@ table {
 	justify-content: center;
 	align-items: center;
 	gap: 1em;
+	margin-bottom: 1.5em;
 }
 
 .attendance-month-select div {
@@ -303,6 +318,29 @@ table {
 	background-color: white;
 }
 
+.P {
+	color: #07ed07;
+	font-weight: 700;
+}
+
+.PH {
+	color: #7ec527;
+	font-weight: 700;
+}
+
+.L {
+	color: orange;
+	font-weight: 700;
+}
+
+.X {
+	color: #ff311f;
+	font-weight: 700;
+}
+
+/* .showSelectYear{
+	display: none;
+} */
 /* ----------- loging --------------- */
 
 .loginDiv_1 {
@@ -417,55 +455,86 @@ table {
 
 
 @media (max-width: 1000px) {
-  .formSec1 {
-    display: none;
-  }
+	.formSec1 {
+		display: none;
+	}
 
-  .formSec2 {
-    width: 100%;
-    padding: 5em;
-  }
+	.formSec2 {
+		width: 100%;
+		padding: 5em;
+	}
 
-  .formSec {
-    width: 100%;
-  }
+	.formSec {
+		width: 100%;
+	}
 
-  .loginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    max-width: 400px;
-    margin: auto;
-    padding: 1em;
-  }
+	.loginForm {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 90%;
+		max-width: 400px;
+		margin: auto;
+		padding: 1em;
+	}
 
-  .navIcon {
-    display: inline-block;
-  }
+	.navIcon {
+		display: inline-block;
+	}
 
-  .navList {
-    display: none
-  }
+	.navList {
+		display: none
+	}
 }
 
 /* -----------  home  --------------- */
 
-.home1{
+.home1 {
 	margin-top: 2em;
 	display: flex;
 	justify-content: space-evenly;
 	width: 100%;
 }
-.totalEmployees, .leaveOfEmployees{
+
+.totalEmployees,
+.leaveOfEmployees {
+	width: 45%;
+	height: 20vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 1em;
+	box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
 }
-.leaveOfEmployees{}
-.leaveOfEmployees p:nth-child(1){
+
+.leaveOfEmployees {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.leaveOfEmployees div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* .leaveOfEmployees {} */
+
+.leavesStyle {
+	color: orange;
+	font-weight: 700;
+
+}
+
+.presenceStyle {
+	color: green;
+	font-weight: 700;
+}
+
+.absenceStyle {
 	color: red;
+	font-weight: 700;
 }

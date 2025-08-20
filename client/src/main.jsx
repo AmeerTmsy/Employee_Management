@@ -15,8 +15,9 @@ import Download from './routes/download';
 import Enterinfo from './routes/enterinfo';
 import Home from './routes/home';
 import Employees from './routes/employees';
-import Presence from './routes/presence'
+import Attendance from './routes/attendance'
 import Login from './routes/login';
+import Account from './routes/account';
 
 const router = createBrowserRouter([
   {
@@ -42,12 +43,16 @@ const router = createBrowserRouter([
         element: <Employees />,
       },
       {
-        path: "/presence",
-        element: <Presence />,
+        path: "/attendance",
+        element: <Attendance />,
       },
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
       },
     ],
   },

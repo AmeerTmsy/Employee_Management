@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function Header({ login, userType }) {
 
@@ -10,16 +10,45 @@ function Header({ login, userType }) {
                 <div>
                     <ul style={{ display: 'flex', alignItems: 'center' }}>
                         <li style={{ padding: '0 1em' }}>
-                            <Link to={'/'} >Home</Link>
+                            <NavLink
+                                to="/"
+                                end
+                                className={({ isActive }) =>
+                                    isActive ? "active-link" : "inactive-link"
+                                }
+                            >
+                                Home
+                            </NavLink>
+                        </li>
+                        {/* <li style={{ padding: '0 1em' }}>
+                            <NavLink
+                                to="/downloads"
+                                className={({ isActive }) =>
+                                    isActive ? "active-link" : "inactive-link"
+                                }
+                            >
+                                Download
+                            </NavLink>
+                        </li> */}
+                        <li style={{ padding: '0 1em' }}>
+                            <NavLink
+                                to="/employees"
+                                className={({ isActive }) =>
+                                    isActive ? "active-link" : "inactive-link"
+                                }
+                            >
+                                Employee
+                            </NavLink>
                         </li>
                         <li style={{ padding: '0 1em' }}>
-                            <Link to={'/downloads'} >download</Link>
-                        </li>
-                        <li style={{ padding: '0 1em' }}>
-                            <Link to={'/employees'} >employees</Link>
-                        </li>
-                        <li style={{ padding: '0 1em' }}>
-                            <Link to={'/presence'} >Presence</Link>
+                            <NavLink
+                                to="/attendance"
+                                className={({ isActive }) =>
+                                    isActive ? "active-link" : "inactive-link"
+                                }
+                            >
+                                Attendance
+                            </NavLink>
                         </li>
                         {!login &&
                             <li style={{ padding: '0 1em' }}>
@@ -28,8 +57,8 @@ function Header({ login, userType }) {
                         }
                         {login &&
                             <li style={{ padding: '0 1em', color: 'white' }}>
-                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', padding: '1em', borderRadius: '50px', height:'10px', width: '10px'}}>
-                                    <Link to={''} >{userType === 'admin' ? 'A': 'E'}</Link>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', padding: '1em', borderRadius: '50px', height: '10px', width: '10px' }}>
+                                    <NavLink to={'/account'} >{userType === 'admin' ? 'A' : 'E'}</NavLink>
                                 </div>
                             </li>
                         }

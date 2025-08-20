@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
+const Counter = require('./counterModel');
 
 const employeeSchema = new mongoose.Schema({
-    employeeId: String,
+    employeeId: {
+        type: String,
+        unique: true
+    },
     name: String,
     email: String,
     designation: String,
@@ -44,6 +48,19 @@ const employeeSchema = new mongoose.Schema({
         required: true
     },
 });
+
+employeeSchema.pre('save', async function (next) {
+    if (this.isNew) {
+        const counter = await Counter.findOneAndUpdate(
+            { name: 'employeeId' },
+            { $inc: { seq: 1 } },
+            { new: true, upsert: true }
+        );
+        const seqNum = counter.seq.toString().padStart(4, '0');
+        this.employeeId = `EMP${seqNum}`;
+    }
+    next();
+})
 
 const Employee = mongoose.model('Employee', employeeSchema);
 

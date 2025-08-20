@@ -39,7 +39,7 @@ const attendanceSchema = new mongoose.Schema({
 
 attendanceSchema.pre('save', function (next) {
     const counts = { P: 0, HP: 0, X: 0, L: 0 };
-    this.records?.forEach(record => {
+    this.records.forEach(record => {
         if (counts.hasOwnProperty(record.status)) {
             counts[record.status]++;
         }
