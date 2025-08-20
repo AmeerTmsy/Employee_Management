@@ -87,9 +87,9 @@ function Attendance(props) {
             }
         }
         sctabel();
-        console.log(attendanceList);
-        console.log(days);
-        console.log(currentMonth);
+        // console.log(attendanceList);
+        // console.log(days);
+        // console.log(currentMonth);
     }, [days, currentMonth]);
 
     const handleMonthChange = (month) => {

@@ -512,6 +512,7 @@ table {
 .leaveOfEmployees {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	gap: 0;
 }
 
 .leaveOfEmployees div {
@@ -519,9 +520,13 @@ table {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	color: #000000;
 }
 
-/* .leaveOfEmployees {} */
+.leaveOfEmployees div:first-child p:last-child{
+	font-size: 0.8em;
+	color: gray;
+}
 
 .leavesStyle {
 	color: orange;

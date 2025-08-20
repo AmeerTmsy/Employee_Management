@@ -2,14 +2,18 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
+import { useCurrentMonthDays } from '../customHooks/dates';
 
 function Home(props) {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
+    const [year, month] = [new Date().getFullYear(), new Date().getMonth()];
+    const { fullDate, todayDayName } = useCurrentMonthDays(month, year);
+
     const [attendanceList, setAttendanceList] = useState([]);
     const [presence, setPresence] = useState(0);
     const [leaves, setLeaves] = useState(0);
     const [absence, setAbsence] = useState(0);
-
+    
     useEffect(() => {
         const fetchAttendanceList = async () => {
             try {
@@ -32,7 +36,6 @@ function Home(props) {
                 day.date === today && day.status === 'P' && setPresence(pre => pre += 1);
                 day.date === today && day.status === 'L' && setLeaves(pre => pre += 1);
                 day.date === today && day.status === 'X' && setAbsence(pre => pre += 1);
-
             })
         )
     }, [attendanceList])
@@ -47,7 +50,8 @@ function Home(props) {
                 </Link>
                 <Link to={'/attendance'} className='leaveOfEmployees'>
                     <div>
-                        <p>Today</p>
+                        <p>{todayDayName ? todayDayName : 'Today'},</p>
+                        <p>{fullDate && fullDate}</p>
                     </div>
                     <div>
                         <p className='presenceStyle'>{presence}</p>
