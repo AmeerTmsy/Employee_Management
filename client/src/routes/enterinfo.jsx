@@ -8,7 +8,7 @@ import axios from 'axios';
 function Enterinfo(props) {
     const currentDate = new Date();
     const currentMonth = monthNames[currentDate.getMonth()];
-    
+
     const [info, setInfo] = useState({
         // 1. Basic Info
         employeeId: '',
@@ -161,8 +161,17 @@ function Enterinfo(props) {
 
         console.log("info: ", info)
         try {
-            const url = `http://localhost:3000/employees`
-            const response = await axios.post(url, info);
+            const url = `${import.meta.env.VITE_API_URL}/employees`
+            const response = await axios.post(
+                url,
+                info,
+                {
+                    withCredentials: true,
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                }
+            );
             console.log('response.data:', response.data); // API response data
         } catch (error) {
             console.error('Error fetching data:', error);

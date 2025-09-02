@@ -1,0 +1,39 @@
+.taskRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 8px 15px 8px 15px;
+    /* border-bottom: 1px solid gray; */
+    height: 35px;
+    transition: all 0.5s ease-in-out;
+    transition: box-shadow 0.1s ease-in-out;
+    overflow: hidden;
+    background-color: white;
+}
+.taskRow:hover{
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+}
+.taskRow p{
+    display: flex;
+    align-items: center;
+}
+.taskRow p:nth-child(2){
+    justify-content: center;
+}
+
+.expanded {  /* 👈 apply when row is clicked */
+    height: 30%;
+    transition: all 0.5s ease-in-out;
+    overflow: auto;
+}
+
+.taskCrew {
+    text-align: center;
+}
+
+.taskStat {
+    margin-left: auto;
+}
+
+.oddRowStyle {
+    background-color: #f3f3ff;
+}

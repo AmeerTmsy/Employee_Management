@@ -9,8 +9,16 @@ function Employees(props) {
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
-                const url = `http://localhost:3000/employees`;
-                const response = await axios.get(url, { withCredentials: true });
+                const url = `${import.meta.env.VITE_API_URL}/employees`;
+                const response = await axios.get(
+                    url,
+                    {
+                        withCredentials: true,
+                        headers: {
+                            "ngrok-skip-browser-warning": "true"
+                        }
+                    }
+                );
                 setEMP(response.data.employees);
                 console.log(response.data.employees); // API response data
             } catch (error) {
@@ -26,10 +34,10 @@ function Employees(props) {
     }, [EMP])
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', width: '100%' }}>
-            <div style={{ marginTop: '4em', display: 'flex', justifyContent: 'space-between', width: "100%", padding: '2em 0' }}>
-                <h2 style={{ marginLeft: '2em', fontSize: "1.5em", fontWeight: '500' }}>Employees</h2>
-                <Link to={'/addInfo'}><button style={{ marginRight: '2em', padding: '0.5em 3em' }}>Add +</button></Link>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+            <div style={{  display: 'flex', justifyContent: 'space-between', width: "100%", padding: '1.5em 0' }}>
+                <h2 style={{ marginLeft: '0.7em', fontSize: "1.5em", fontWeight: '700' }}>employees</h2>
+                <Link to={'/admin/addInfo'}><button style={{ marginRight: '2em', padding: '0.5em 3em' }}>Add +</button></Link>
             </div>
             <div className='employeeTable'>
                 <div className='tableHeader'>

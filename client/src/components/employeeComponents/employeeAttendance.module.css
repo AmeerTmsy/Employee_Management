@@ -1,0 +1,100 @@
+.myAttendance {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.calendarWrapper {
+  max-width: 600px;   
+  margin: 0 auto;
+}
+:global(.react-calendar) {
+  width: 100% !important; 
+  max-width: 100% !important;
+}
+:global(.react-calendar__tile--now) {
+  background: #e7e7e7 !important;
+}
+
+.present,
+.halfPresent,
+.leave,
+.absent {
+    position: relative;
+    height: 60px;
+    width: 60px;
+}
+
+.normalDayStyle{
+    height: 60px;
+    width: 60px;
+}
+.normalDayStyle abbr{
+    font-size: 1.5em;
+}
+.present abbr,
+.halfPresent abbr,
+.leave abbr,
+.absent abbr {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-weight: 500;
+    font-size: 1.5em;
+}
+
+.present::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #02c702 ;
+    transform: translate(-48%, -55%);
+    z-index: 0;
+}
+
+
+.halfPresent::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #45ff45 !important;
+    transform: translate(-48%, -55%);
+    border-radius: 50%;
+}
+
+.leave::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: orange !important;
+    transform: translate(-48%, -55%);
+    border-radius: 50%;
+}
+
+.absent::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: red !important;
+    transform: translate(-48%, -55%);
+    border-radius: 50%;
+}

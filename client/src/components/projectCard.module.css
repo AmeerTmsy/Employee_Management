@@ -1,0 +1,35 @@
+
+
+
+
+.projectkRow{
+     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 8px 15px 8px 15px;
+    height: 35px;
+    transition: box-shadow 0.1s ease-in-out;
+    background-color: white;
+}
+.projectkRow:hover{
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+    border-bottom: 1px solid lightgray;
+}
+.projectkRow p:nth-child(2){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.projectkRow p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.projectkRow p:nth-child(1){
+    justify-content: flex-start;
+}
+.projectkRow p:nth-child(3){
+    justify-content: flex-end;
+}
+.oddRowStyle{
+    background-color: #fff0fc;
+}

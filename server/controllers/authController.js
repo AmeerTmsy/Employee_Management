@@ -7,14 +7,14 @@ const login = async (req, res) => {
     try {
 
         let employee = await Employee.findOne({ email: req.body.email }).select('-password').exec()
-        console.log("employee: ", employee.name);
-        let token = jwt.sign({ name: employee.name, id: employee.employeeId, email: employee.email }, process.env.TOKEN_SECRET)
-        console.log(token);
-
         if (!employee) return res.status(404).json({
             success: false,
             message: "User not found",
         })
+        let token = jwt.sign({ name: employee.name, id: employee.employeeId, email: employee.email }, process.env.TOKEN_SECRET)
+        console.log(token);
+
+        console.log("employee: ", employee?.name);
 
         res.cookie('token', token, { httpOnly: true, secure: process.env.ENVIRONMENT === 'development' ? false : true, maxAge: 1 * 60 * 60 * 1000, sameSite: 'None' })
         res.status(200).json({
@@ -31,13 +31,17 @@ const login = async (req, res) => {
 }
 
 const logout = async (req, res) => {
+
+
     try {
-        return res.status(200).json({
-            success: true,
-            message: "Logout successfully",
-        })
+        res.clearCookie("token",{
+            sameSite: process.env.ENVIRONMENT === "development" ? 'Lax': 'None',
+            secure: process.env.ENVIRONMENT === "development" ? false : true,
+            httpOnly:true
+        });
+        res.json({ success: true, message: "user logged out" });
     } catch (error) {
-        return res.status(400).json({
+        return res.status(500).json({
             success: false,
             message: `Error while logout, error${error}`,
         })

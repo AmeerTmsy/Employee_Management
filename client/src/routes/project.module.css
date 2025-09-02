@@ -1,0 +1,41 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    position: relative;;
+}
+
+.projectsList{
+    margin: 2em 2em 0em 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 1em;
+    border-radius: 2.5px;
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+}
+
+.projectRow, .projectTitle{
+    transition: box-shadow 0.1s ease-in-out;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em 15px;
+    /* border-bottom: 1px solid gray; */
+}
+
+.projcetRow:hover{
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+}
+
+.projectTitle{
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.projectTitle h4:last-child{
+    margin-left: auto;
+}
+.taskStatus {
+    margin-left: auto;
+}
+.taskCrew{
+    text-align: center;
+}

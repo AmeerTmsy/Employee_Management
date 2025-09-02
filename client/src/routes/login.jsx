@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authenticate } from '../features/login/loginSlice';
 
 function Login(props) {
@@ -9,13 +9,40 @@ function Login(props) {
     const [password, setPassword] = useState('');
     const [passEyeSee, setPassEyeSee] = useState(false);
     const [errors, setErrors] = useState({ email: '', password: '' });
+    const location = useLocation();
 
     const navigate = useNavigate();
     const { login } = useSelector((state) => state.login)
     const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     const API_URL = import.meta.env.VITE_API_URL;
+    //     console.log("API URL:", API_URL);
+
+    //     fetch(`${API_URL}/api/check`, {
+    //         method: "GET",
+    //         headers: {
+    //             "ngrok-skip-browser-warning": "true",
+    //         },
+    //     })
+    //         .then(async res => {
+    //             const text = await res.text();
+    //             try {
+    //                 const data = JSON.parse(text);
+    //                 console.log("ip check:", data);
+    //             } catch {
+    //                 console.error("Not JSON, got:", text);
+    //             }
+    //         })
+    //         .catch(err => console.error(err));
+    // }, []);
+
     useEffect(() => {
-        if (login) navigate('/');
-    }, [login])
+        if (login) {
+            const redirectPath = location.state?.from || '/';
+            navigate(redirectPath, { replace: true });
+        }
+    }, [login, navigate, location.state])
 
     const validateForm = () => {
         let valid = true;
@@ -43,21 +70,32 @@ function Login(props) {
         return valid;
     }
 
-    // useEffect(() => {
-    //     // if (login) navigate('/')
-    // }, [login]);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) return;
 
         const payload = { "email": email, "password": password }
+        console.log("URL: ",import.meta.env.VITE_API_URL)
+        try {
+            let url = `${import.meta.env.VITE_API_URL}/auth/login`;
+            console.log(url);
 
-        let url = `http://localhost:3000/auth/login`;
-        let { data } = await axios.post(url, payload, {withCredentials: true})
+            let { data } = await axios.post(
+                url,
+                payload,
+                {
+                    withCredentials: true,
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                }
+            )
 
-        console.log("data: ", data.employee.role);
-        dispatch(authenticate({userType: data.employee.role, login: true}))
+            console.log("data: ", data);
+            dispatch(authenticate({ userType: data.employee.role, name: data.employee.name, userId: data.employee._id, }));
+        } catch (error) {
+            console.error("Login failed:", error);
+        }
     };
 
     return (

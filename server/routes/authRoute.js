@@ -8,3 +8,4 @@ router.get('/logout', logout)
 router.get('/loginVerify', loginVerify)
 
 module.exports = router
+ 

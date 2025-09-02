@@ -1,0 +1,30 @@
+.addNewProject{
+    position: absolute;
+    max-width: 700px;     /* ✅ sets the max */
+    width: 90%;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -45%);
+    padding: 1em;
+    border-radius: 3px;
+    background-color: #f4f4f4;
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+}
+
+.newProjectRow{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    padding-bottom: 1em;
+}
+
+.newProjectRow label{
+    font-size: 0.8em;
+}
+.newProjectRow input, .newProjectRow select{
+    padding: 0.8em 1em;
+    border: none;
+    outline: none;
+    background-color: white;
+    border-radius: 4px;
+}

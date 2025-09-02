@@ -1,28 +1,37 @@
-import React, { useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import axios from 'axios';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
-function Header({ login, userType }) {
+function Header() {
+    const { login, user } = useSelector((state) => state.login)
+    const { userType } = user || {}
+    const location = useLocation()
 
+    const handleLogout = async () => {
+        try {
+            const url = `${import.meta.env.VITE_API_URL}/auth/logout`
+            const axios_headers = {
+                withCredentials: true, headers: {
+                    "ngrok-skip-browser-warning": "true"
+                }
+            }
+            await axios.get(url, axios_headers)
+                .then(res => console.log(res))
+
+            setTimeout(() => { window.location.reload() }, 200)
+        } catch (error) {
+            console.error('Error during Logout: ', error)
+        }
+    }
     return (
-        <div style={{ width: '100%', height: '4em', backgroundColor: 'lightblue' }}>
-            <div style={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 2em' }}>
-                <h2 style={{ fontWeight: '700' }}><Link to={'/'}>manage</Link></h2>
+        <div style={{ width: '100%', height: '100%' }}>
+            <div style={{ height: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '0 2em' }}>
                 <div>
                     <ul style={{ display: 'flex', alignItems: 'center' }}>
-                        <li style={{ padding: '0 1em' }}>
-                            <NavLink
-                                to="/"
-                                end
-                                className={({ isActive }) =>
-                                    isActive ? "active-link" : "inactive-link"
-                                }
-                            >
-                                Home
-                            </NavLink>
-                        </li>
                         {/* <li style={{ padding: '0 1em' }}>
                             <NavLink
-                                to="/downloads"
+                                to={`${userType}/downloads`}
                                 className={({ isActive }) =>
                                     isActive ? "active-link" : "inactive-link"
                                 }
@@ -30,37 +39,24 @@ function Header({ login, userType }) {
                                 Download
                             </NavLink>
                         </li> */}
-                        <li style={{ padding: '0 1em' }}>
-                            <NavLink
-                                to="/employees"
-                                className={({ isActive }) =>
-                                    isActive ? "active-link" : "inactive-link"
-                                }
-                            >
-                                Employee
-                            </NavLink>
-                        </li>
-                        <li style={{ padding: '0 1em' }}>
-                            <NavLink
-                                to="/attendance"
-                                className={({ isActive }) =>
-                                    isActive ? "active-link" : "inactive-link"
-                                }
-                            >
-                                Attendance
-                            </NavLink>
-                        </li>
-                        {!login &&
-                            <li style={{ padding: '0 1em' }}>
-                                <Link to={'/login'} >Login</Link>
-                            </li>
-                        }
                         {login &&
-                            <li style={{ padding: '0 1em', color: 'white' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', padding: '1em', borderRadius: '50px', height: '10px', width: '10px' }}>
-                                    <NavLink to={'/account'} >{userType === 'admin' ? 'A' : 'E'}</NavLink>
-                                </div>
-                            </li>
+                            <button
+                                onClick={handleLogout}
+                                style={{
+                                    backgroundColor: "tomato",
+                                    color: "white",
+                                    border: "none",
+                                    padding: "0.7em 1.2em",
+                                    borderRadius: "50px",
+                                    cursor: "pointer",
+                                    fontWeight: "bold",
+                                    transition: "all 0.3s ease",
+                                }}
+                                onMouseOver={(e) => (e.target.style.backgroundColor = "red")}
+                                onMouseOut={(e) => (e.target.style.backgroundColor = "tomato")}
+                            >
+                                logout
+                            </button>
                         }
                     </ul>
                 </div>

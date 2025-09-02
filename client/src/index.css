@@ -109,6 +109,7 @@ section {
 html,
 body {
 	overflow-x: hidden;
+	 scroll-behavior: smooth;
 }
 
 body {
@@ -138,13 +139,16 @@ q:after {
 /* ////////////-- Navigation -- ////////////// */
 .active-link {
 	color: white;
-	/* font-weight: bold; */
-	/* border-bottom: 2px solid white; */
-	transition: all 500ms ease-in-out;
+    background: #ffffff33;
+	backdrop-filter: blur(20px);
+	transition: all 200ms ease-in-out;
+	padding: 0.9em 1.5em 0.9em 1.5em;
 }
 
 .inactive-link {
 	color: gray;
+	padding: 0.9em 1.5em 0.9em 1.5em;
+	transition: all 200ms ease-in-out;
 }
 
 .inactive-link:hover {
@@ -170,7 +174,7 @@ table {
 	width: 98%;
 	display: flex;
 	flex-direction: column;
-	padding: 0 1em;
+	padding: 0 0.5em;
 	box-sizing: border-box;
 	/* background-color: #c4c4c4; */
 	/* border: 1px solid black; */
@@ -215,7 +219,7 @@ table {
 /* ----------------- table attendance ---------------- */
 /* Container */
 .presence-container {
-	padding: 1em;
+	padding: 0.5em 1em 1em 1em;
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
@@ -224,11 +228,10 @@ table {
 
 /* Title */
 .presence-title {
-	padding-top: 2.5em;
-	margin-bottom: 0.5em;
+	/* margin-bottom: 0.5em; */
 	text-align: center;
-	font-size: 1.8rem;
-	font-weight: 600;
+	font-size: 1.7rem;
+	font-weight: 700;
 }
 
 /* Scroll container */
@@ -295,7 +298,7 @@ table {
 	justify-content: center;
 	align-items: center;
 	gap: 1em;
-	margin-bottom: 1.5em;
+	/* margin-bottom: 1.5em; */
 }
 
 .attendance-month-select div {
@@ -415,7 +418,6 @@ table {
 }
 
 .passDiv {
-	width: 100%;
 	border: 0.51px solid black;
 	border-radius: 3px;
 	display: flex;
@@ -506,9 +508,15 @@ table {
 	justify-content: center;
 	align-items: center;
 	gap: 1em;
-	box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+	box-shadow: -1px 0px 5px #c4c4c4, 1px -1px 5px #c4c4c4;
+	transition: box-shadow 0.1s ease-in-out;
 }
-
+.totalEmployees:hover,
+.leaveOfEmployees:hover{
+	box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+	webkit-box-shadow: 0 0 10px #fff;
+        box-shadow: 0 0 10px #fff;
+}
 .leaveOfEmployees {
 	display: grid;
 	grid-template-columns: 1fr 1fr;

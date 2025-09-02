@@ -1,0 +1,54 @@
+.taskHome {
+    margin: 1.5em 2em 0em 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid gray;
+    border-radius: 2.5px;
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+}
+
+.taskHome svg {
+    width: 30em !important;
+    height: 30em !important;
+    font-weight: 700 !important;
+    outline: none !important;
+}
+
+@media(max-width: 970px) {
+    .taskHome {
+        text-align: center;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 400px) {
+    .taskHome svg {
+        width: 18em !important;
+        height: 18em !important;
+        font-weight: 700 !important;
+    }
+}
+
+.subtaskes {
+    margin: 1.5em 2em 1.3em 2em;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    padding: 2em 2em;
+    border-radius: 2.5px;
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+    transition: all 0.5s ease-in-out;
+}
+
+.taskCheckBox {
+    font-size: 1.2em;
+}
+
+.completionCheck {
+    color: #04ff04;
+}
+
+.recharts-pie g:focus,
+path:focus {
+    outline: none !important;
+}

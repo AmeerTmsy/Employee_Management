@@ -1,0 +1,33 @@
+.taskHome{
+    margin: 2em 2em 0em 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 1em;
+    border-radius: 2.5px;
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+}
+.taskRow, .taskTitle{
+    transition: box-shadow 0.1s ease-in-out;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em 15px;
+    /* border-bottom: 1px solid gray; */
+}
+.taskRow:hover{
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+}
+.taskTitle{
+    font-size: 1.2em;
+    font-weight: 500;
+    /* border-bottom: 2px solid #000; */
+}
+.taskTitle h4:last-child{
+    margin-left: auto;
+}
+.taskStatus {
+    margin-left: auto;
+}
+.taskCrew{
+    text-align: center;
+}

@@ -1,0 +1,64 @@
+.home1 {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    width: 100%;
+}
+
+
+.totalEmployees {
+    width: 300px;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    box-shadow: -1px 0px 5px #c4c4c4, 1px -1px 5px #c4c4c4;
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.totalEmployees:hover {
+    box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .leaveOfEmployees div:first-child p:last-child {
+    font-size: 0.8em;
+    color: gray;
+}
+
+.leavesStyle {
+    color: orange;
+    font-weight: 700;
+
+}
+
+.presenceStyle {
+    color: green;
+    font-weight: 700;
+}
+
+.absenceStyle {
+    color: red;
+    font-weight: 700;
+} */
