@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  origin: "http://localhost:5173", 
+  origin: ["http://localhost:5173","https://employee-management-seven-rose.vercel.app"], 
   credentials: true
 }));
 app.use(cookieParser());
