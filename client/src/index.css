@@ -139,20 +139,21 @@ q:after {
 /* ////////////-- Navigation -- ////////////// */
 .active-link {
 	color: white;
-    background: #ffffff33;
+    background-color: #21202033;
 	backdrop-filter: blur(20px);
 	transition: all 200ms ease-in-out;
 	padding: 0.9em 1.5em 0.9em 1.5em;
+	border-left: 3px solid black;
 }
 
 .inactive-link {
-	color: gray;
+	color: #000;
 	padding: 0.9em 1.5em 0.9em 1.5em;
 	transition: all 200ms ease-in-out;
 }
 
 .inactive-link:hover {
-	color: black;
+	background-color: #d0d0d080;
 }
 
 /* ////////////-- Attendance -- ////////////// */

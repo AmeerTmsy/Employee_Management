@@ -11,6 +11,8 @@ const EmployeeRoute = require('./routes/employeeRoute');
 const Auth = require('./routes/authRoute');
 const Attendance = require('./routes/attendanceRoute');
 const Task = require('./routes/taskRoutes');
+const LeaveRequest = require('./routes/leaveRequestRoute');
+
 const connectDB = require('./config/db');
 connectDB();
 app.use(express.json())
@@ -22,7 +24,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  origin: ["http://localhost:5173","https://employee-management-seven-rose.vercel.app"], 
+  origin: ["http://localhost:5173","http://localhost:5174","https://employee-management-seven-rose.vercel.app"], 
   credentials: true
 }));
 app.use(cookieParser());
@@ -34,6 +36,7 @@ app.use('/employees', EmployeeRoute)
 app.use('/auth', Auth)
 app.use('/attendance', Attendance) 
 app.use('/task', Task)
+app.use('/leave-request', LeaveRequest)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

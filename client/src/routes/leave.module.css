@@ -4,7 +4,8 @@
 }
 
 .normalDayStyle,
-.leave {
+.leave,
+.leaveRequest {
     position: relative;
     height: 60px;
     width: 60px;
@@ -12,7 +13,8 @@
 
 
 .leave abbr,
-.normalDayStyle abbr {
+.normalDayStyle abbr,
+.leaveRequest abbr {
     position: relative;
     z-index: 1;
     font-size: 1.5em;
@@ -32,7 +34,19 @@
     height: 30px;
     border-radius: 50%;
     background-color: red;
-    transform: translate(-48%, -55%);
+    transform: translate(-50%, -57%);
+    z-index: 0;
+}
+.leaveRequest::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fa3b6e;
+    transform: translate(-50%, -57%);
     z-index: 0;
 }
 
@@ -47,7 +61,7 @@
     box-shadow: -1px 0px 5px #c4c4c4, 1px -1px 5px #c4c4c4;
 }
 
-.addRemoveLeave input {
+.addRemoveLeave .addEventInput {
     min-width: 300px;
     letter-spacing: 0.05em;
     font-size: 0.9em;

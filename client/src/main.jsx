@@ -92,6 +92,10 @@ const router = createBrowserRouter([
             path: "account",
             element: <Account />,
           },
+          {
+            path: "leave",
+            element: <Leave />,
+          },
         ]
       },
     ],
