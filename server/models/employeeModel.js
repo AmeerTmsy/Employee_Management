@@ -41,6 +41,8 @@ const employeeSchema = new mongoose.Schema({
     dateOfJoining: String,
     offerAcceptanceDate: String,
     password: String,
+    googleId: { type: String },
+    refreshToken: { type: String },
     role: {
         type: String,
         enum: ['employee', 'admin'], // Directly define enum values here
