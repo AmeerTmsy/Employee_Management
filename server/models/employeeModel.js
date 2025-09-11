@@ -41,7 +41,7 @@ const employeeSchema = new mongoose.Schema({
     dateOfJoining: String,
     offerAcceptanceDate: String,
     password: String,
-    googleId: { type: String },
+    a
     refreshToken: { type: String },
     role: {
         type: String,
