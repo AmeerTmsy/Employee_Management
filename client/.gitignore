@@ -9,6 +9,8 @@ lerna-debug.log*
 
 .env
 node_modules
+OAuth2_0.json
+
 dist
 dist-ssr
 *.local
