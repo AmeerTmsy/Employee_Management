@@ -23,6 +23,7 @@ import VerifyAdmin from './components/verificationComponents/verifyAdmin';
 import VerifyEmployee from './components/verificationComponents/verifyEmployee';
 import Project from './routes/project';
 import Leave from './routes/leave';
+import GoogleCalendar from './routes/googleCalendar';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
             path: "leave",
             element: <Leave />,
           },
+          {
+            path: "google-caleldar",
+            element: <GoogleCalendar />,
+          },
         ]
       },
       {
@@ -95,6 +100,10 @@ const router = createBrowserRouter([
           {
             path: "leave",
             element: <Leave />,
+          },
+          {
+            path: "google-caleldar",
+            element: <GoogleCalendar />,
           },
         ]
       },
