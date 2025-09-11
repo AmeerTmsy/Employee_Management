@@ -106,6 +106,21 @@ function HomeLeftSideBar({ setSideBarGrow, sideBarGrow }) {
                             </li>
                         )}
                     </NavLink>
+                    <NavLink
+                        to={`${userType}/google-caleldar`}
+                        className={({ isActive }) =>
+                            isActive ? "active-link" : "inactive-link"
+                        }
+                    >
+                        {({ isActive }) => (
+                            <li style={{ listStyle: "none" }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    {sideBarGrow && <span>Google Calendar</span>}
+                                    <i className="ri-calendar-line"></i>
+                                </div>
+                            </li>
+                        )}
+                    </NavLink>
                 </ul>
                 {login &&
                     <NavLink
