@@ -47,6 +47,11 @@ export default function Root() {
     const { login, user } = useSelector((state) => state.login)
 
     useEffect(() => {
+      user.userType? console.log("user: ", user) : console.log("user is not here yet")
+    }, [login])
+    
+
+    useEffect(() => {
         // Only redirect to login if we're initialized and have no user data
         // Don't redirect if we're already on the login page
         if (isInitialized && !userData && !login && location.pathname !== '/login') {
