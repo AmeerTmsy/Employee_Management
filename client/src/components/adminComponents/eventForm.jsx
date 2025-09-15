@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./EventForm.module.css";
+import styles from "./eventForm.module.css";
 import axios from 'axios'
 
 const priorities = [
