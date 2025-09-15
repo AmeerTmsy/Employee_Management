@@ -6,8 +6,8 @@ const router = express.Router();
 router.get("/google", passport.authenticate(
     "google", {
         scope: ["profile", "email", "https://www.googleapis.com/auth/calendar.events"],
-        accessType: "offline",      // 👈 forces refreshToken
-        prompt: "consent",          // 👈 asks user every time
+        // accessType: "offline",      // 👈 forces refreshToken
+        // prompt: "consent",          // 👈 asks user every time
     }
 ));
 
