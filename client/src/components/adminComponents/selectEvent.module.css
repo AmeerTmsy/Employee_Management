@@ -1,0 +1,38 @@
+.overlay {
+    font-size: 0.8em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    background: white;
+    padding: 1em 1.5em;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.modal h3 {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+.modal p {
+    font-size: 1.1em;
+    margin-bottom: 0.1em;
+}
+
+.empEmails p:nth-child(2), p:nth-child(3) {
+    color: #393939;
+}

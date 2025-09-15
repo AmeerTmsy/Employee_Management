@@ -14,6 +14,8 @@ passport.use(
             try {
                 let user = await Employee.findOne({ googleId: profile.id }).select('-password').exec()
                 console.log("googleAuth.js loaded");
+                console.log("AccessToken: ", accessToken);
+                console.log("RefreshToken: ", refreshToken);
 
                 if (!user) {
                     user = await Employee.create({

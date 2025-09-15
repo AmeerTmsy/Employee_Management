@@ -5,6 +5,7 @@ const checkLogin = async (req, res, next) => {
     if (req.cookies.token) {
         try {
             const tokenDecode = jwt.verify(req.cookies.token, process.env.TOKEN_SECRET);
+            req.user = tokenDecode
             console.log('check login');
 
             next();

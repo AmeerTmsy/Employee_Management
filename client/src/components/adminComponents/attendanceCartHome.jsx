@@ -16,7 +16,7 @@ function AttendanceCartHome(props) {
     ]
     return (
         <div style={{ display: 'flex', justifyContent: "center" }}>
-            <PieChart width={500} height={490}>
+            <PieChart width={500} height={350}>
                 <Tooltip />
                 {testMeasurments.map((s, idx) =>
                     <Pie

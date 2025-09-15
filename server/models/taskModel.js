@@ -7,18 +7,18 @@ const taskSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ["To Do", "In Progress", "Blocked", "Completed"],
+        enum: ["To Do", "In Progress", "Blocked", "Completed", "Returned"],
         default: "To Do"
     },
     priority: {
         type: String,
-        enum: ["Low", "Medium", "High", "Critical"],
-        default: "Medium"
+        default: "medium"
     },
     assignedTo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Employee"
     },
+    attendees: [],
     assignedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Employee"
@@ -26,6 +26,13 @@ const taskSchema = new mongoose.Schema({
     dueDate: {
         type: Date
     },
+    startDate: {
+        type: Date
+    },
+    endDate: {
+        type: Date
+    },
+    calendarEventId: { type: String },
     progress: {
         type: Number,
         min: 0,
@@ -46,6 +53,7 @@ const taskSchema = new mongoose.Schema({
             ref: "Employee"
         },
     }],
+    googleEventId: { type: String },
 }, { timestamps: true });
 
 const Task = mongoose.model('Task', taskSchema);

@@ -444,6 +444,7 @@ table {
 }
 
 .subBtn {
+	width: 100%;
 	margin-top: 1em;
 	background-color: #5b5bff;
 	color: #fff;

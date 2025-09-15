@@ -15,6 +15,7 @@ const Attendance = require('./routes/attendanceRoute');
 const Task = require('./routes/taskRoutes');
 const LeaveRequest = require('./routes/leaveRequestRoute');
 const GoogleAuth = require('./routes/auth')
+const CalendarEvent = require("./routes/calendarRoute")
 const checkNetworkIPA = require('./midleware/networkIPA');
 
 const connectDB = require('./config/db');
@@ -43,6 +44,7 @@ app.use('/attendance', Attendance)
 app.use('/task', Task)
 app.use('/leave-request', LeaveRequest)
 app.use('/api/auth', GoogleAuth)
+app.use("/api/calendar", CalendarEvent);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
