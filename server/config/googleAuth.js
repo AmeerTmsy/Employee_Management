@@ -14,21 +14,16 @@ passport.use(
             try {
                 let user = await Employee.findOne({ googleId: profile.id }).select('-password').exec()
                 console.log("googleAuth.js loaded");
-                console.log("AccessToken: ", accessToken);
-                console.log("RefreshToken: ", refreshToken);
 
-                if (!user) {
-                    user = await Employee.create({
-                        name: profile.displayName,
-                        email: profile.emails[0].value,
-                        googleId: profile.id,
-                        refreshToken: refreshToken,
-                    });
-                } else {
-                    if (refreshToken) {
-                        user.refreshToken = refreshToken;
-                        await user.save();
-                    }
+                if (!user) user = await Employee.create({
+                    name: profile.displayName,
+                    email: profile.emails[0].value,
+                    googleId: profile.id,
+                    refreshToken: refreshToken,
+                });
+                else if (refreshToken) {
+                    user.refreshToken = refreshToken;
+                    await user.save();
                 }
 
                 return done(null, user);

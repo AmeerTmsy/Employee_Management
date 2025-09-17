@@ -15,7 +15,7 @@ const employeeSchema = new mongoose.Schema({
     accountNo: String,
     ifsc: String,
     branch: String,
-    grossWages: Number,
+    grossWage: Number,
     totalWorkingDays: Number,
     workingHours: Number,
     paymentSchedule: String,
@@ -24,7 +24,7 @@ const employeeSchema = new mongoose.Schema({
         casualLeave: Number,
         sickLeave: Number,
     },
-    lopDays: Number,
+    lopDays: Number,    
     leaves: Number,
     paidDays: Number,
     earnings: {
@@ -41,8 +41,8 @@ const employeeSchema = new mongoose.Schema({
     dateOfJoining: String,
     offerAcceptanceDate: String,
     password: String,
-    googleId: { type: String },
-    refreshToken: { type: String },
+    googleId: String,
+    refreshToken: String,
     role: {
         type: String,
         enum: ['employee', 'admin'], // Directly define enum values here

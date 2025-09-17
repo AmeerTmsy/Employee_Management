@@ -9,7 +9,7 @@ const requestIp = require('request-ip')
 const passport = require('passport');
 require('./config/googleAuth')
 
-const EmployeeRoute = require('./routes/employeeRoute');
+const Employee = require('./routes/employeeRoute');
 const Auth = require('./routes/authRoute');
 const Attendance = require('./routes/attendanceRoute');
 const Task = require('./routes/taskRoutes');
@@ -38,7 +38,7 @@ app.use(requestIp.mw());
 // app.get("/api/check", checkNetworkIPA);
 app.get("/", (req, res) => res.send("API is running..."));
 
-app.use('/employees', EmployeeRoute)
+app.use('/employees', Employee)
 app.use('/auth', Auth)
 app.use('/attendance', Attendance) 
 app.use('/task', Task)

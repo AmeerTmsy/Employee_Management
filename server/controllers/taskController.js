@@ -40,7 +40,7 @@ const addTask = async (req, res) => {
 const updateTask = async (req, res) => {
 
     try {
-        const { id } = req.params
+        `const { id } = req.params`
         const { body } = req
         console.log("update task", id, body);
         const updatedTask = await Task.findOneAndUpdate(
