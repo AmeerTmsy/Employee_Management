@@ -1,3 +1,4 @@
+const sendEmail = require("../config/sendMail");
 const Attendance = require("../models/attendanceModel");
 const Employee = require("../models/employeeModel")
 const nodemailer = require('nodemailer');
@@ -61,34 +62,24 @@ const createEmployee = async (req, res) => {
     // console.log("req.body: ", req.body);
     try {
         const newEmployee = new Employee(req.body);
-        await newEmployee.save();
+        console.log(newEmployee);
+        
         // creating attendance model for the employee
         const attendance = new Attendance({ employeeId: newEmployee._id, employeeName: newEmployee.name });
-
+        
         console.log("newEmployee: ", newEmployee);
-
-        // nodemailer configuration
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
-
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: newEmployee.email,
-            subject: `${process.env.EMAIL_USER} , An admin from employee management has created a new account for you with an id of ${newEmployee.employeeId}`,
-            text: `You can now log in to the Employee Management Web with following credentials. email: ${newEmployee.email}, passowrd: ${newEmployee.password} \n or you can login using Google address with the email ${newEmployee.email}`
-        }
-
-        await transporter.sendMail(mailOptions);
+        
+        
+        const subject = `${process.env.EMAIL_USER} , An admin from employee management has created a new account for you with an id of ${newEmployee.employeeId}`
+        const text = `You can now log in to the Employee Management Web with following credentials. email: ${newEmployee.email}, passowrd: ${newEmployee.password} \n or you can login using Google address with the email ${newEmployee.email}`
+        
+        const response= await sendEmail(newEmployee.email, subject, text);
+        console.log(response);
+        
+        await newEmployee.save();
         await attendance.save();
 
-        return res.status(200).json({
+        res.status(200).json({
             success: true,
             message: "New employee added successfully",
             data: newEmployee,
