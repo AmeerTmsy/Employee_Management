@@ -61,7 +61,7 @@ function EventForm({ slotInfo, onSave, onCancel }) {
                 attendees: attendees
             });
 
-            console.log("Event created:", data);
+            console.log("Event created:", response);
         } catch (err) {
             console.error(
                 "Error saving event:",
@@ -77,7 +77,7 @@ function EventForm({ slotInfo, onSave, onCancel }) {
                     <h3>Add New Event</h3><i className="ri-function-add-fill"></i>
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                <form className={styles.eventformstyles} onSubmit={handleSubmit}>
                     <label style={{ display: 'flex', flexDirection: 'column', }}>
                         {/* Event Title: */}
                         <input type="text" value={title} placeholder="Event Title" onChange={(e) => setTitle(e.target.value)} required />

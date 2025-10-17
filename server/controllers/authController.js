@@ -16,7 +16,12 @@ const login = async (req, res) => {
 
         console.log("employee: ", employee?.name);
 
-        res.cookie('token', token, { httpOnly: true, secure: process.env.ENVIRONMENT === 'development' ? false : true, maxAge: 1 * 60 * 60 * 1000, sameSite: 'None' })
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.ENVIRONMENT === 'development' ? false : true,
+            sameSite: process.env.ENVIRONMENT === "development" ? 'Lax' : 'None',
+            maxAge: 1 * 60 * 60 * 1000,
+        })/*sameSite: process.env.ENVIRONMENT === "development" ? 'Lax' : 'None'*/
         res.status(200).json({
             success: true,
             message: "Login successfully",
@@ -34,10 +39,10 @@ const logout = async (req, res) => {
 
 
     try {
-        res.clearCookie("token",{
-            sameSite: process.env.ENVIRONMENT === "development" ? 'Lax': 'None',
+        res.clearCookie("token", {
+            sameSite: process.env.ENVIRONMENT === "development" ? 'Lax' : 'None',
             secure: process.env.ENVIRONMENT === "development" ? false : true,
-            httpOnly:true
+            httpOnly: true
         });
         res.json({ success: true, message: "user logged out" });
     } catch (error) {
@@ -49,22 +54,27 @@ const logout = async (req, res) => {
 }
 
 const loginVerify = async (req, res) => {
-    // console.log('req.cookie:............................................\n ', req.cookies);
+    console.log('req.cookie:............................................ ', req.cookies);
     try {
 
         if (req.cookies.token) {
             const tokenDecode = jwt.verify(req.cookies.token, process.env.TOKEN_SECRET)
-            // console.log(tokenDecode);
+            console.log(tokenDecode);
             let employee = await Employee.findOne({ email: tokenDecode.email }).select('-password').exec()
+            if (!employee) return res.status(400).json({
+                success: false,
+                message: 'Not fonud emplyee with the tocken'
+            })
+
             return res.status(200).json({
                 success: true,
                 message: "Verifyed",
                 employee
             })
         }
-        return res.status(200).json({
+        return res.status(400).json({
             success: false,
-            message: "token not verifyed",
+            message: "token is empty",
         })
     } catch (error) {
         return res.status(400).json({

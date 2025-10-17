@@ -19,6 +19,10 @@
     border: none;
 }
 
+.selectProject{
+    padding: 0.9em 1em;
+}
+
 select{
     outline: none;
     border: none;
@@ -26,7 +30,7 @@ select{
 }
 .assign_and_date{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1em;
     width: 100%;
 }

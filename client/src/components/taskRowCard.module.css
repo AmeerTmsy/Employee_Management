@@ -11,6 +11,7 @@
 }
 .taskRow:hover{
     box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
+    border-left: 1px solid gray;
 }
 .taskRow p{
     display: flex;

@@ -8,15 +8,19 @@
 }
 
 .calendarWrapper {
-  max-width: 600px;   
-  margin: 0 auto;
+    max-width: 600px;
+    margin: 0 auto;
 }
+
 :global(.react-calendar) {
-  width: 100% !important; 
-  max-width: 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    box-shadow: 0.15em 0.2em 0.6em #959595, -0.01em -0.01em 0.2em #d2d2d2;
 }
+
 :global(.react-calendar__tile--now) {
-  background: #e7e7e7 !important;
+    background: #e7e7e7 !important;
 }
 
 .present,
@@ -28,13 +32,15 @@
     width: 60px;
 }
 
-.normalDayStyle{
+.normalDayStyle {
     height: 60px;
     width: 60px;
 }
-.normalDayStyle abbr{
+
+.normalDayStyle abbr {
     font-size: 1.5em;
 }
+
 .present abbr,
 .halfPresent abbr,
 .leave abbr,
@@ -54,7 +60,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #02c702 ;
+    background-color: #02c702;
     transform: translate(-48%, -55%);
     z-index: 0;
 }

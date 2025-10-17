@@ -12,14 +12,14 @@ export async function loader() {
         const res = await axios.get(
             `${import.meta.env.VITE_API_URL}/auth/loginVerify`,
             {
-                withCredentials: true,
+                withCredentials: true, 
                 headers: {
                     "ngrok-skip-browser-warning": "true"
                 }
             }
         )
         const userData = res?.data?.employee;
-        // console.log(userData);
+        console.log("res: ", res);
         return { userData };
     } catch (error) {
         console.error("Authentication verification failed:", error);
@@ -47,9 +47,9 @@ export default function Root() {
     const { login, user } = useSelector((state) => state.login)
 
     useEffect(() => {
-      user.userType? console.log("user: ", user) : console.log("user is not here yet")
+        user.userType ? console.log("user: ", user) : console.log("user is not here yet")
     }, [login])
-    
+
 
     useEffect(() => {
         // Only redirect to login if we're initialized and have no user data
@@ -82,7 +82,8 @@ export default function Root() {
         width: "100%",
         height: "100vh",
         display: "flex",
-        backgroundImage: "url('https://images.unsplash.com/photo-1464618663641-bbdd760ae84a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+        background: '#fbfee8ff',
+        // backgroundImage: "url('https://images.unsplash.com/photo-1464618663641-bbdd760ae84a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         // backgroundRepeat: "no-repeat"
@@ -96,21 +97,24 @@ export default function Root() {
                 </div>}
                 <section style={{ width: login ? (sideBarGrow ? '77%' : '95%') : '100%', height: '100vh' }} className={classes.rightMainSection}>
                     {login &&
-                        <header style={{ height: '10vh' }}>
+                        <header style={{ height: '9.9vh', }}>
                             <div style={{ position: "fixed", width: '100%', height: '10%', zIndex: '999' }}>
                                 <Header login={login} user={user} />
                             </div>
                         </header>
                     }
                     {/* backdropFilter: 'blur(150px)', WebkitBackdropFilter: 'blur(100px)', */}
-                    <div style={{
-                        background: 'rgb(249 249 249 / 70%)', // ✅ translucent white
-                        backdropFilter: 'blur(0px)',
-                        WebkitBackdropFilter: 'blur(0px)',
-                        overflow: 'auto',
-                        borderRadius: '1em 0em 0em 0em',
-                        height: login ? '90vh' : '100vh',
-                    }}>
+                    <div
+                        className={classes.scrolling}
+                        style={{
+                            background: 'transparent', // ✅ translucent white
+                            backdropFilter: 'blur(0px)',
+                            WebkitBackdropFilter: 'blur(0px)',
+                            overflow: 'auto',
+                            borderRadius: '0.5em',
+                            height: login ? '88.4vh' : '100vh',
+                            margin: '0.2em 10.5px 0.2em 0em'
+                        }}>
                         <Outlet />
                     </div>
                 </section>

@@ -54,7 +54,7 @@ function Home(props) {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', borderRadius: '1em 0em 0em 0em' }}>
-            <h1 style={{ marginTop: '1.5em', textAlign: 'center' }}>Welcome Back</h1>
+            {/* <h1 style={{ textAlign: 'center', borderBottom: '1px solid gray', padding: '1em', boxShadow: '0 1px 6px 2px #aaaaaaff' }}>Welcome Back</h1> */}
             {user.userType === 'admin' && <AdminHome attendanceListLength={attendanceList.length} todayDayName={todayDayName} fullDate={fullDate} presence={presence} leaves={leaves} absence={absence} />}
             {user.userType === 'employee' && <EmployeeHome todayDayName={todayDayName} fullDate={fullDate} />}
         </div>

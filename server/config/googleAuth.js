@@ -7,7 +7,7 @@ passport.use(
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: "http://localhost:3000/api/auth/google/callback",
+            callbackURL: `${process.env.API_URL}/api/auth/google/callback`,
             passReqToCallback: true,
         },
         async (req, accessToken, refreshToken, profile, done) => {
@@ -15,13 +15,15 @@ passport.use(
                 let user = await Employee.findOne({ googleId: profile.id }).select('-password').exec()
                 console.log("googleAuth.js loaded");
 
+                console.log('refreshToken: ', refreshToken)
+
                 if (!user) user = await Employee.create({
                     name: profile.displayName,
                     email: profile.emails[0].value,
                     googleId: profile.id,
                     refreshToken: refreshToken,
                 });
-                else if (refreshToken) {
+                if (refreshToken) {
                     user.refreshToken = refreshToken;
                     await user.save();
                 }

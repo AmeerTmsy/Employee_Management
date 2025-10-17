@@ -1,0 +1,55 @@
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: lightgray;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* ensures clean layering */
+}
+
+/* animated border layer */
+.circle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* fill the parent */
+    border-radius: 50%;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid black;
+    animation: spin 2s linear infinite;
+}
+
+/* content stays fixed */
+.circle-content {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.belowHoverLine {
+    font-family: "Montserrat", sans-serif;
+    border-radius: 4px;
+    color: #272424 !important;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.2em 0.5em;
+    transition: all 0.3s ease-in-out;
+}
+
+.showSadow {
+    box-shadow: -1px 0px 5px #c4c4c4, 1px -1px 5px #c4c4c4;
+}

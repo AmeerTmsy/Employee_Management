@@ -28,17 +28,17 @@
     margin-bottom: 0.5em;
 }
 
-label {
+.eventformstyles label {
     display: block;
 }
-select {
+.eventformstyles select {
     padding: 0.4em;
     margin-top: 0.2em;
     border: 1px solid gray;
     width: 100%;
     font-family: "Montserrat", sans-serif;
 }
-input{
+.eventformstyles input{
     padding: 0.4em;
     margin-top: 0.2em;
     border: none;

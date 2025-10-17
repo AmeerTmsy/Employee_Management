@@ -26,7 +26,7 @@ const getEmployeeById = async (req, res) => {
         const employee = await Employee.findById({ _id: id }).exec();
         if (!employee) return res.status(404).json({
             success: false,
-            message: `Employee not found, error${error}`,
+            message: `Employee not found`,
         })
         res.status(200).json({
             success: true,
@@ -43,7 +43,7 @@ const getEmployeeById = async (req, res) => {
 
 const getEmployeeCount = async (req, res) => {
     try {
-        const employeesCount = await Employee.countDocuments({});
+        const employeesCount = await Employee.countDocuments({role: 'employee'});
         res.status(200).json({
             success: true,
             message: "Successfully",

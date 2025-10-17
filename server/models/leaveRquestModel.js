@@ -6,13 +6,13 @@ const leaveSchema = new mongoose.Schema({
         enum: ['Sick', 'Casual', 'Other'],
         required: true,
     },
-    reason: {
+    description: {
         type: String,
         trim: true,
         maxlength: 500,
     },
     date: {
-        type: String,
+        type: Date, 
         required: true,
     },
     status: {

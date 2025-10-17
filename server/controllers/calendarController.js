@@ -9,7 +9,9 @@ exports.createEvent = async (req, res) => {
 
     // 1. Get OAuth client for current user
     const oAuth2Client = await getOAuthClient(req.user.id);
+    console.log('oAuth2Client: ', oAuth2Client)
     const calendar = google.calendar({ version: "v3", auth: oAuth2Client });
+    console.log('calendar: ', calendar)
 
     // 2. Create Google Calendar event
     const gEvent = await calendar.events.insert({
@@ -23,6 +25,8 @@ exports.createEvent = async (req, res) => {
         attendees: attendees.map(email => ({ email })),
       }, 
     });
+
+    console.log('gevent: ', gEvent)
 
     // 3. Save in MongoDB Task schema
     const newTask = new Task({
@@ -40,7 +44,7 @@ exports.createEvent = async (req, res) => {
 
     return res.status(201).json({
       message: "Event created",
-      googleEventId: gEvent.data.id,
+      googleEventId: newTask.googleEventId,
       task: newTask,
     });
   } catch (error) {

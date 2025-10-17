@@ -1,0 +1,11 @@
+.attendanceDetails {
+    background-color: white;
+    border: 1px solid darkgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid gray;
+    border-radius: 0.15em;
+    width: 100%;
+    padding: 0 1em;
+}

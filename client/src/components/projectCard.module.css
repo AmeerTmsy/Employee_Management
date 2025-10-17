@@ -13,6 +13,7 @@
 .projectkRow:hover{
     box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
     border-bottom: 1px solid lightgray;
+    border-left: 1px solid gray;
 }
 .projectkRow p:nth-child(2){
     display: flex;

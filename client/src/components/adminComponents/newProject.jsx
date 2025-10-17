@@ -1,33 +1,40 @@
 import React, { useState } from 'react';
 import classes from './newProject.module.css'
-const allMembers = [
-    { member: "Employee 1", memberId: "66cf1a9e7d1f1b23c0a33333" },
-    { member: "Employee 2", memberId: "66cf1a9e7d1f1b23c0a44444" },
-    { member: "Employee 3", memberId: "66cf1a9e7d1f1b23c0a55555" },
-];
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-function NewProject({ setAddNewModal }) {
+function NewProject({ setAllProjects, allProjects, setAddNewModal }) {
+    const { login, user } = useSelector((state) => state.login)
 
-    const [newPrject, setNewProject] = useState({
+    const [employees, setEmployees] = useState()
+    useEffect(() => {
+        const fetcthEmployees = async () => {
+            try {
+                const url = `${import.meta.env.VITE_API_URL}/employees`
+                const res = await axios.get(url, { withCredentials: true })
+                setEmployees(res.data.employees)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        fetcthEmployees()
+    }, [])
+
+    // useEffect(() => {
+    //     if (user) console.log('user: ', user.userId);
+    // }, [user])
+    useEffect(() => {
+        if (employees) console.log('employees: ', employees);
+    }, [employees])
+
+    const [newProject, setNewProject] = useState({
         name: "",
         description: "",
-        manager: "66cf1a9e7d1f1b23c0a22222",
+        manager: user?.userId,
         members: [],
-        tasks: [],
         deadline: "",
-        status: "On Going",
     })
-
-    const [addMemberToNewProject, setAddMemberToNewProject] = useState({ member: '', memberId: '' });
-
-    const addMemeber = () => {
-        if (!subTaskInput.trim()) return;
-        setNewProject((prev) => ({
-            ...prev,
-            members: [...prev.members, addMemberToNewProject],
-        }));
-        setSubTaskInput('');
-    }
 
     const removeMember = (index) => {
         setNewProject((prev) => ({
@@ -36,11 +43,28 @@ function NewProject({ setAddNewModal }) {
         }));
     };
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        console.log(newPrject);
-        // setAddNewModal(false);
+        if (newProject.name.trim() === "" && newProject.description.trim() === "") {
+            alert("fileds should not be empty")
+            return
+        }
+        try {
+            const url = `${import.meta.env.VITE_API_URL}/project`
+            const res = await axios.post(url, newProject, { withCredentials: true })
+            console.log('res: ', res);
+            setAllProjects([...allProjects, res.data.project])
+        } catch (err) {
+            console.log(err)
+        }
+
+
+        setAddNewModal(false);
     }
+
+    // useEffect(()=>{
+    //     console.log(newProject)
+    // },[newProject])
     return (
         <div className={classes.addNewProject}>
             <span onClick={() => setAddNewModal(false)} style={{ position: 'absolute', right: '20px', cursor: 'pointer' }}>✕</span>
@@ -49,43 +73,45 @@ function NewProject({ setAddNewModal }) {
                 <form onSubmit={handleFormSubmit}>
                     <div className={classes.newProjectRow}>
                         <label htmlFor="name">Name</label>
-                        <input type="text" id='name' name='name' />
+                        <input maxLength={100} type="text" id='name' name='name' value={newProject.name} onChange={(e) => setNewProject({ ...newProject, name: e.target.value })} />
                     </div>
                     <div className={classes.newProjectRow}>
                         <label htmlFor="description">Description</label>
-                        <input type="text" id='description' name='description' />
+                        <input maxLength={1000} type="text" id='description' name='description' value={newProject.description} onChange={(e) => setNewProject({ ...newProject, description: e.target.value })} />
                     </div>
-                    <div className={classes.newProjectRow}>
+                    <div className={classes.newProjectRow} style={{ paddingBottom: '0em !important' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1em' }}>
                             <div className={classes.newProjectRow}>
-                                <label htmlFor="deadline">Select Members</label>
+                                <label htmlFor="assignedTo">Select Members</label>
                                 <select
                                     id="assignedTo"
-                                // value={taskData.assignedTo}
-                                // onChange={(e) => setTaskData({ ...taskData, assignedTo: e.target.value })}
+                                    // value={newProject.members}
+                                    onChange={(e) => setNewProject({
+                                        ...newProject,
+                                        members: [...newProject.members, e.target.value]
+                                    })}
                                 >
-                                    <option value="" disabled>Assign To</option>
-                                    <option value="employee1">Employee 1</option>
-                                    <option value="employee2">Employee 2</option>
-                                    <option value="employee3">Employee 3</option>
+                                    <option value="" defaultValue hidden>Assign To</option>
+                                    {employees &&
+                                        employees.map((employee, idx) => <option key={idx} value={employee._id}>{employee.name}</option>
+                                        )}
                                 </select>
                             </div>
                             <div className={classes.newProjectRow}>
                                 <label htmlFor="deadline">Deadline</label>
-                                <input type="date" id='deadline' name='deadline' />
+                                <input type="date" id='deadline' name='deadline' value={newProject.deadline} onChange={(e) => setNewProject({ ...newProject, deadline: e.target.value })} />
                             </div>
                         </div>
                     </div>
-                    {newPrject.members.length > 0 &&
-                        <div className={classes.newProjectRow}>
+                    {newProject.members.length > 0 &&
+                        <div className={classes.newProjectRow} style={{ paddingTop: '0em !important' }}>
                             <div>
-                                {newPrject.members.map((member, idx) => (
-                                    member.member && (
+                                {newProject.members.map((member, idx) => (
+                                    employees.map(employee => employee._id === member &&
                                         <span
                                             key={idx}
-                                            style={{ padding: '0.5em 1em', margin: '0.3em', backgroundColor: 'white', border: '1px solid lightgray', borderRadius: '5px', display: 'inline-block', }}
-                                        >{member.member}&nbsp;&nbsp;<span onClick={() => removeSubTask(idx)}>✕</span></span>
-                                    )
+                                            style={{ fontSize: '0.8em', padding: '0.3em 1em', margin: '0.3em', backgroundColor: 'white', border: '1px solid lightgray', borderRadius: '5px', display: 'inline-block', }}
+                                        >{employee.name}&nbsp;&nbsp;<span onClick={() => removeMember(idx)}>✕</span></span>)
                                 ))}
                             </div>
                         </div>

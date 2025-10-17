@@ -17,6 +17,9 @@ const LeaveRequest = require('./routes/leaveRequestRoute');
 const GoogleAuth = require('./routes/auth')
 const CalendarEvent = require("./routes/calendarRoute")
 const checkNetworkIPA = require('./midleware/networkIPA');
+const SalarySlip = require('./routes/salaryRoute');
+const Project = require('./routes/projectRoute');
+const PublicHoliday = require('./routes/publicHolidayRoute');
 
 const connectDB = require('./config/db');
 connectDB();
@@ -27,9 +30,9 @@ app.use((req, res, next) => {
   res.setHeader('ngrok-skip-browser-warning', 'skip-browser-warning');
   next();
 });
-
+console.log(process.env.FRONTEND_URL)
 app.use(cors({
-  origin: ["http://localhost:5173","http://localhost:5174","http://192.168.18.53:5173","https://employee-management-seven-rose.vercel.app"], 
+  origin: process.env.FRONTEND_URL, 
   credentials: true
 }));
 app.use(cookieParser());
@@ -45,7 +48,9 @@ app.use('/task', Task)
 app.use('/leave-request', LeaveRequest)
 app.use('/api/auth', GoogleAuth)
 app.use("/api/calendar", CalendarEvent);
+app.use("/project", Project);
+app.use("/public-holiday", PublicHoliday);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Example app listening on port ${port}`) 
 })

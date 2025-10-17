@@ -1,68 +1,154 @@
 .myCalendarWrapper :global(.rbc-day-bg) {
-  background-color: white !important;
+    background-color: white !important;
 }
 
 .myCalendarWrapper :global(.rbc-off-range-bg) {
-  background-color: #e2e2e2 !important;
+    background-color: #f5f5f5 !important;
 }
 
-.myCalendarWrapper :global(.rbc-header){
+.myCalendarWrapper :global(.rbc-header) {
     background-color: #e7f5fc !important;
 }
-.myCalendarWrapper :global(.rbc-day-slot){
+
+.myCalendarWrapper :global(.rbc-day-slot) {
     background-color: #ffffff !important;
 }
-.myCalendarWrapper :global(.rbc-time-gutter){
+
+.myCalendarWrapper :global(.rbc-time-gutter) {
     background-color: #e7f5fc !important;
 }
-.myCalendarWrapper :global(.rbc-timeslot-group){
+
+.myCalendarWrapper :global(.rbc-timeslot-group) {
     padding: 0.5em 0 !important;
 }
-.myCalendarWrapper :global(.rbc-agenda-table){
+
+.myCalendarWrapper :global(.rbc-agenda-table) {
     background-color: #ffffff !important;
 }
-.myCalendarWrapper :global(.rbc-btn-group){
-    background-color: #b1b1b1 !important;
-    border-radius: 4px;
+
+.myCalendarWrapper :global(.rbc-btn-group) {
+    border-radius: 3px;
 }
-.myCalendarWrapper :global(.rbc-toolbar){
+
+.myCalendarWrapper :global(.rbc-btn-group button) {
+    width: 5em !important;
+    margin: 0em 0.2em !important;
+    border: none;
+    /* border-radius: 25px; */
+    transition: all 0.3s ease-in-out;
+}
+
+.myCalendarWrapper :global(.rbc-btn-group button:hover) {
+    background-color: #e0e0e0;
+}
+.myCalendarWrapper :global(.rbc-btn-group:nth-child(3) button) {
+    border-radius: 25px !important;
+}
+
+.myCalendarWrapper :global(.rbc-active) {
+    background-color: #ffffff !important;
+    border-radius: 25px !important;
+    box-shadow: 0.15em 0.15em 0.4em #959595, -0.15em -0.01em 0.4em #959595 !important;
+}
+
+.myCalendarWrapper :global(.rbc-toolbar-label) {
+    font-weight: 500;
+}
+
+.myCalendarWrapper :global(.rbc-toolbar) {
     text-align: center !important;
-    padding: 0.5em !important;
+    padding: 0.3em !important;
     border-bottom: 1px solid gray;
+    box-shadow: 0.15em 0.15em 0.4em #959595, -0.01em -0.01em 0.2em #959595;
+    border-radius: 2px;
 }
-.myCalendarWrapper :global(.rbc-toolbar button){
+
+.myCalendarWrapper :global(.rbc-toolbar button) {
     padding: 0.5em !important;
 }
 
-.myCalendarWrapper :global(.rbc-month-view){
-    border: 0.15em solid rgb(181, 181, 181);
+.myCalendarWrapper :global(.rbc-month-view) {
+    border: none;
+    box-shadow: 0.15em 0.2em 0.6em #959595, -0.01em -0.01em 0.2em #d2d2d2;
 }
-.myCalendarWrapper :global(.rbc-header){
-    padding: 0.6em;
+
+.myCalendarWrapper :global(.rbc-header) {
+    padding: 0.6em 1em;
     background-color: #e7f5fc !important;
 }
-.myCalendarWrapper :global(.rbc-date-cell){
+
+.myCalendarWrapper :global(.rbc-date-cell) {
     text-align: center;
-}
-.myCalendarWrapper :global(.rbc-allday-cell){
-    display: none;
-}
-.myCalendarWrapper :global(.rbc-events-container){
-    margin: 0 !important;
+    margin-top: 0.5em;
 }
 
+.myCalendarWrapper :global(.rbc-allday-cell) {
+    display: none;
+}
+
+.myCalendarWrapper :global(.rbc-events-container) {
+    /* margin: 0 !important; */
+}
+/* ::-webkit-scrollbar */
+/* .myCalendarWrapper :global(.rbc-time-content::-webkit-scrollbar) {
+    width: 2.5px;
+}
+
+.myCalendarWrapper :global(.rbc-time-content::-webkit-scrollbar-track) {
+    background: #f1f1f1;
+}
+
+.myCalendarWrapper :global(.rbc-time-content::-webkit-scrollbar-thumb) {
+    background: #332e2e;
+    cursor: pointer;
+} */
+
+.myCalendarWrapper :global(.rbc-time-view) {
+    box-shadow: 0.15em 0.2em 0.6em #959595, -0.01em -0.01em 0.2em #d2d2d2;
+}
+
+.myCalendarWrapper :global(.rbc-agenda-view) {
+    padding: 1em;
+    box-shadow: 0.15em 0.15em 1em #959595;
+}
+.myCalendarWrapper :global(.rbc-agenda-table th) {
+    border: 1px solid;
+    border-color: black;
+}
+.myCalendarWrapper :global(.rbc-agenda-table) {
+    border: 1px solid black !important;
+}
+.myCalendarWrapper :global(.rbc-row-segment) {
+    padding: 0 0.2em;
+}
+.myCalendarWrapper :global(.rbc-agenda-table tr) {
+    background-color: white !important;
+    color: black !important     ;
+}
+.myCalendarWrapper :global(.rbc-agenda-table tr td:last-child) {
+    cursor: pointer;
+}
+
+
+
 :root {
-  --priority-high: #ff2756;     /* red */
-  --priority-medium: #ffcd07;   /* yellow */
-  --priority-low: #22c55e;      /* green */
-  --priority-urgent: #9333ea;   /* purple */
-  --priority-normal: #3b82f6;   /* blue */
-  --priority-optional: #6b7280; /* gray */
+    --priority-high: #ff2756;
+    /* red */
+    --priority-medium: #ffcd07;
+    /* yellow */
+    --priority-low: #22c55e;
+    /* green */
+    --priority-urgent: #9333ea;
+    /* purple */
+    --priority-normal: #3b82f6;
+    /* blue */
+    --priority-optional: #6b7280;
+    /* gray */
 }
 
 .event {
-  color: white;
-  border-radius: 6px;
-  padding: 2px 6px;
-  font-size: 0.85rem;
+    color: white;
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-size: 0.85rem;
 }

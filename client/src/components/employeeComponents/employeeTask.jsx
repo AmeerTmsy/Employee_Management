@@ -31,8 +31,8 @@ function EmployeeTask(props) {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ marginTop: '0.5em', padding: '1em 0 0 2em' }}>
-                <h1 style={{ fontSize: '1.5em', fontWeight: '700' }}>taskes</h1>
+            {/* <div style={{ marginTop: '0.5em', padding: '1em 0 0 2em' }}>
+                <h1 style={{ fontSize: '1.5em', fontWeight: '700' }}>tasks</h1>
                 <h1 style={{ fontSize: '1em', fontWeight: '500' }}>{todayDayName}, {fullDate}</h1>
             </div>
             <div className={classes.taskHome}>
@@ -83,10 +83,108 @@ function EmployeeTask(props) {
                         >{task.isCompleted ? <i className="ri-checkbox-line"></i> : <i className={`ri-checkbox-blank-line`}></i>}</p>
                     </div>
                 ))}
-            </div>}
+            </div>} */}
+
+            <div>
+                <div style={{ backgroundColor: 'white', borderRadius: '12px', padding: '0 0em', marginBottom: '0.3em' }}>
+                    <div className={`${classes.taskRow} ${classes.taskRowHeader}`}>
+                        <div>Today</div>
+                        <div className={classes.taskRowCell}>DUE DATE</div>
+                        <div className={classes.taskRowCell}>STAGE</div>
+                        <div className={classes.taskRowCell}>PRIORITY</div>
+                        <div className={classes.taskRowCell}>TEAM</div>
+                        <div className={classes.taskRowCell}>ASSIGNED</div>
+                    </div>
+                    {
+                        tasks.map(task => (
+                            <div className={classes.taskRow}>
+                                <div style={{display: 'flex', alignItems: 'center'}}><i style={{ paddingRight: '0.5em', color: 'gray' }} className="ri-checkbox-blank-circle-line"></i>{task.tastTitle}</div>
+                                <div className={classes.taskRowCell}>{task.date}</div>
+                                <div className={classes.taskRowCell}> <span className={`${classes.cellSpanStyle} ${classes.cellStageSpanStyle}`}>{task.stage}</span></div>
+                                <div className={classes.taskRowCell}> <span className={`${classes.cellSpanStyle} ${classes.cellPriorityStyle}`}>{task.priority}</span></div>
+                                <div className={classes.taskRowCell}>{task.team}</div>
+                                <div className={classes.taskRowCell}> <img style={{width: '30px', borderRadius: '25px'}} src={task.profile} alt="profile image" /> </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div style={{ backgroundColor: 'white', borderRadius: '12px', padding: '0 0em', marginBottom: '0.3em' }}>
+                    <div className={`${classes.taskRow} ${classes.taskRowHeader}`}>
+                        <div>Tomorrow</div>
+                        <div className={classes.taskRowCell}>DUE DATE</div>
+                        <div className={classes.taskRowCell}>STAGE</div>
+                        <div className={classes.taskRowCell}>PRIORITY</div>
+                        <div className={classes.taskRowCell}>TEAM</div>
+                        <div className={classes.taskRowCell}>ASSIGNED</div>
+                    </div>
+                    {
+                        tasks.map(task => (
+                            <div className={classes.taskRow}>
+                                <div style={{display: 'flex', alignItems: 'center'}}><i style={{ paddingRight: '0.5em', color: 'gray' }} className="ri-checkbox-blank-circle-line"></i>{task.tastTitle}</div>
+                                <div className={classes.taskRowCell}>{task.date}</div>
+                                <div className={classes.taskRowCell}> <span className={`${classes.cellSpanStyle} ${classes.cellStageSpanStyle}`}>{task.stage}</span></div>
+                                <div className={classes.taskRowCell}> <span className={`${classes.cellSpanStyle} ${classes.cellPriorityStyle}`}>{task.priority}</span></div>
+                                <div className={classes.taskRowCell}>{task.team}</div>
+                                <div className={classes.taskRowCell}> <img style={{width: '30px', borderRadius: '25px'}} src={task.profile} alt="profile image" /> </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div style={{ backgroundColor: 'white', borderRadius: '12px', padding: '0 0em', marginBottom: '0.3em' }}>
+                    <div className={`${classes.taskRow} ${classes.taskRowHeader}`}>
+                        <div>This week</div>
+                        <div className={classes.taskRowCell}>DUE DATE</div>
+                        <div className={classes.taskRowCell}>STAGE</div>
+                        <div className={classes.taskRowCell}>PRIORITY</div>
+                        <div className={classes.taskRowCell}>TEAM</div>
+                        <div className={classes.taskRowCell}>ASSIGNED</div>
+                    </div>
+                    {
+                        tasks.map(task => (
+                            <div className={classes.taskRow}>
+                                <div style={{display: 'flex', alignItems: 'center'}}><i style={{ paddingRight: '0.5em', color: 'gray' }} className="ri-checkbox-blank-circle-line"></i>{task.tastTitle}</div>
+                                <div className={classes.taskRowCell}>{task.date}</div>
+                                <div className={classes.taskRowCell}> <span className={`${classes.cellSpanStyle} ${classes.cellStageSpanStyle}`}>{task.stage}</span></div>
+                                <div className={classes.taskRowCell}> <span className={`${classes.cellSpanStyle} ${classes.cellPriorityStyle}`}>{task.priority}</span></div>
+                                <div className={classes.taskRowCell}>{task.team}</div>
+                                <div className={classes.taskRowCell}> <img style={{width: '30px', borderRadius: '25px'}} src={task.profile} alt="profile image" /> </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
         </div >
     );
 }
 
 
 export default EmployeeTask;
+
+
+
+const tasks = [
+    {
+        tastTitle: 'Finish monthly reporting',
+        date: 'Today',
+        stage: 'In progress',
+        priority: 'high',
+        team: 'Marketing',
+        profile: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=580'
+    },
+    {
+        tastTitle: 'Finish monthly reporting',
+        date: 'Today',
+        stage: 'In progress',
+        priority: 'high',
+        team: 'Poeration',
+        profile: 'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870'
+    },
+    {
+        tastTitle: 'Finish monthly reporting',
+        date: 'Today',
+        stage: 'In progress',
+        priority: 'high',
+        team: 'Customer Care',
+        profile: 'https://images.unsplash.com/photo-1676115405660-5720eb0fb20c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=580'
+    },
+]

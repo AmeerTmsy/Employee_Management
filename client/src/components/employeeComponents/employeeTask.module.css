@@ -52,3 +52,35 @@
 path:focus {
     outline: none !important;
 }
+
+.taskRow {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 1.2em 1em;
+    border-bottom: 1px solid #f2f2f2ff;
+    font-size: 0.8em;
+}
+
+.taskRowHeader {
+    font-weight: 500;
+    color: gray;
+}
+
+.taskRowCell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cellSpanStyle {
+    border-radius: 25px;
+    padding: 0.1em 0.5em;
+}
+
+.cellStageSpanStyle {
+    background-color: #f2d027ff;
+}
+
+.cellPriorityStyle {
+    background-color: #DFB96D;
+}

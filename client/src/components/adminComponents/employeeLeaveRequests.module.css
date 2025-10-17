@@ -1,0 +1,55 @@
+.leaveAlovenceBtn {
+    width: 7em;
+    height: 2em;
+    border: 1px solid gray;
+    border-radius: 3px;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+    color: #fff;
+}
+
+.rejectBtn {
+    background-color: #f73030ff;
+}
+
+.rejectBtn:hover {
+    background-color: #ff4e4e;
+    border-color: #fff;
+}
+
+.allowBtn {
+    background-color: #25b82cff;
+}
+
+.allowBtn:hover {
+    background-color: #29cb31;
+    border-color: white;
+}
+
+.openProfileIcon {
+    transform: scaleX(-1);
+    display: inline-block;
+    cursor: pointer;
+}
+
+.showSpan {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(5%, -110%);
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 10;
+    transition: all 0.5s ease-in-out;
+}
+
+.openProfileIcon:hover + .showSpan {
+    display: inline-block;
+}

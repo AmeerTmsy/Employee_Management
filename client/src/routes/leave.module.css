@@ -3,9 +3,39 @@
   margin: 0 auto; */
 }
 
+.headingDiv {
+    width: 77px;
+    height: 20px;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid gray;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 0.7em;
+    cursor: pointer;
+}
+
+.showLeaveRequestOrNot {
+    margin-top: 0.5px !important;
+    width: 50%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    margin: 0.04em 0.1em;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+}
+
 .normalDayStyle,
 .leave,
-.leaveRequest {
+.leaveRequest,
+.approvedLeave,
+.RejectedLeave {
     position: relative;
     height: 60px;
     width: 60px;
@@ -14,7 +44,9 @@
 
 .leave abbr,
 .normalDayStyle abbr,
-.leaveRequest abbr {
+.leaveRequest abbr,
+.approvedLeave abbr,
+.RejectedLeave abbr {
     position: relative;
     z-index: 1;
     font-size: 1.5em;
@@ -25,7 +57,10 @@
     color: white;
 }
 
-.leave::before {
+.leave::before,
+.leaveRequest::before,
+.approvedLeave::before,
+.RejectedLeave::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -33,21 +68,22 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: red;
-    transform: translate(-50%, -57%);
+    transform: translate(-48%, -52%);
     z-index: 0;
 }
+
+.leave::before {
+    background-color: red;
+}
+
 .leaveRequest::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
     background-color: #fa3b6e;
-    transform: translate(-50%, -57%);
-    z-index: 0;
+}
+.approvedLeave::before {
+    background-color: #3bfa45;
+}
+.RejectedLeave::before {
+    background-color: #cdcdcd;
 }
 
 .addRemoveLeave {
@@ -65,10 +101,45 @@
     min-width: 300px;
     letter-spacing: 0.05em;
     font-size: 0.9em;
-	font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     border: none;
     outline: 0.1em solid gray;
-    background-color: #c4c4c4;
+    border-radius: 2px;
+    background-color: #f3f3f3;
     padding: 0.5em 1em;
-    text-align: center;
+    /* text-align: center; */
+}
+
+.calendarWrapper :global(.react-calendar__navigation) {
+    border-bottom: 1px solid black !important;
+    background-color: #ebebeb;
+    font-size: 1.2em;
+    box-shadow: 3px 3px 8px #c4c4c4;
+}
+
+.calendarWrapper :global(abbr) {
+    text-decoration: none;
+}
+
+.calendarWrapper :global(.react-calendar__month-view__weekdays) {
+    font-size: 0.9em !important;
+}
+
+.calendarWrapper :global(.react-calendar__tile) {
+    border: 0.1em solid #e8e8e8;
+    transition: all 0.3s ease-in-out;
+}
+
+.calendarWrapper :global(.react-calendar__tile:hover) {
+    border: none;
+    background-color: #f5f5f5;
+}
+
+.calendarWrapper :global(.react-calendar__navigation__arrow) {
+    width: 5em;
+    font-size: x-large;
+}
+
+.calendarWrapper :global(.react-calendar__navigation__label span) {
+    font-size: large;
 }

@@ -9,8 +9,8 @@ function AttendanceCartHome(props) {
     const testMeasurments = [
         {
             data: [
-                { name: "Precent", value: taskCompletion, fill: '#139730ff' },
-                { name: "Leave", value: taskPending, fill: "#ada4a4ff" },
+                { name: "Present", value: taskCompletion, fill: '#219316ff' },
+                { name: "Leave", value: taskPending, fill: "#ae0303ff" },
             ]
         }
     ]

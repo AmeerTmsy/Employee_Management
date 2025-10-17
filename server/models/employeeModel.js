@@ -43,6 +43,10 @@ const employeeSchema = new mongoose.Schema({
     password: String,
     googleId: String,
     refreshToken: String,
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
     role: {
         type: String,
         enum: ['employee', 'admin'], // Directly define enum values here

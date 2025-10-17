@@ -3,8 +3,8 @@
     max-width: 700px;     /* ✅ sets the max */
     width: 90%;
     right: 50%;
-    top: 50%;
-    transform: translate(50%, -45%);
+    top: 30%;
+    transform: translate(50%, 0%);
     padding: 1em;
     border-radius: 3px;
     background-color: #f4f4f4;

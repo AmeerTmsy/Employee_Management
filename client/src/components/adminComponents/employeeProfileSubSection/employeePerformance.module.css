@@ -1,0 +1,23 @@
+.blinking_dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: gray;
+  border-radius: 50%;
+}
+.blinking_dot_active {
+  background-color: green;
+  animation: blink 1.5s infinite ease-in-out;
+}
+.blinking_dot_active{
+    animation: blink 1.5s infinite ease-in-out;
+}
+/* .blinking_dot_active:nth-child(3){
+    animation: blink 1.5s infinite ease-in-out;
+} */
+
+@keyframes blink {
+  0% { background-color: green; }
+  50% { background-color: rgb(137, 226, 137); }
+  100% { background-color: green; }
+}

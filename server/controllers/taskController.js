@@ -2,7 +2,11 @@ const Task = require("../models/taskModel");
 
 const getTask = async (req, res) => {
     try {
-        const tasks = await Task.find({});
+        const tasks = await Task.find({}).populate({
+            path: 'assignedTo',
+            select: 'name _id'
+        });
+
         res.status(200).json({
             success: true,
             message: 'Tetriveing task data successful',
@@ -12,7 +16,27 @@ const getTask = async (req, res) => {
         res.status(400).json({
             success: false,
             message: 'Error while retriveing task data, ',
-            'error': error
+            error
+        })
+    }
+}
+const getTaskById = async (req, res) => {
+    try {
+        const { id } = req.params
+        const tasks = await Task.find({ assignedTo: id }).populate({
+            path: 'assignedTo',
+            select: 'name _id'
+        });
+        res.status(200).json({
+            success: true,
+            message: 'Tetriveing task data successful',
+            tasks
+        })
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: 'Error while retriveing task data, ',
+            error
         })
     }
 }
@@ -20,8 +44,13 @@ const addTask = async (req, res) => {
     // console.log('req.body: ', req.body);
 
     try {
-        const newTask = new Task(req.body);
+        let newTask = new Task(req.body);
         await newTask.save();
+        // console.log("req.body: ", req.body)
+        newTask = await Task.find({_id: newTask._id}).populate({
+            path: 'assignedTo',
+            select: 'name _id'
+        });
 
         if (newTask) console.log(newTask)
         res.status(200).json({
@@ -30,6 +59,7 @@ const addTask = async (req, res) => {
             newTask
         })
     } catch (error) {
+        console.log(error)
         res.status(400).json({
             success: false,
             message: 'Error while adding new task, ',
@@ -74,6 +104,7 @@ const deleteTask = async (req, res) => {
 
 module.exports = {
     getTask,
+    getTaskById,
     addTask,
     updateTask,
     deleteTask

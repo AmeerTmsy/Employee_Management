@@ -26,7 +26,8 @@ const projects = [
     deadline: "2025-09-30T00:00:00Z",
     status: "Active",
     createdAt: "2025-08-20T10:00:00Z",
-    updatedAt: "2025-08-24T15:30:00Z"
+    updatedAt: "2025-08-24T15:30:00Z",
+    completion: 10,
   },
   {
     _id: "66cf1a9e7d1f1b23c0a11112",
@@ -54,7 +55,8 @@ const projects = [
     deadline: "2025-10-15T00:00:00Z",
     status: "On Hold",
     createdAt: "2025-07-18T12:20:00Z",
-    updatedAt: "2025-08-21T18:40:00Z"
+    updatedAt: "2025-08-21T18:40:00Z",
+    completion: 10,
   },
   {
     _id: "66cf1a9e7d1f1b23c0a11113",
@@ -83,7 +85,8 @@ const projects = [
     deadline: "2025-12-01T00:00:00Z",
     status: "Active",
     createdAt: "2025-08-01T09:15:00Z",
-    updatedAt: "2025-08-25T10:05:00Z"
+    updatedAt: "2025-08-25T10:05:00Z",
+    completion: 10,
   },
   {
     _id: "66cf1a9e7d1f1b23c0a11114",
@@ -111,7 +114,8 @@ const projects = [
     deadline: "2025-11-10T00:00:00Z",
     status: "Completed",
     createdAt: "2025-06-10T14:45:00Z",
-    updatedAt: "2025-08-22T16:00:00Z"
+    updatedAt: "2025-08-22T16:00:00Z",
+    completion: 10,
   }
 ]
 

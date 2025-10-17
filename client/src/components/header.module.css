@@ -1,0 +1,30 @@
+.taskAddBtn button{
+    background-color: #f2d027ff;
+    width: 80px;
+    height: 30px;
+    border-radius: 25px;
+    border: 1px solid gray;
+    font-size: 0.7em;
+    transition: all 0.3s ease-in-out;
+}
+.taskAddBtn button:hover{
+    background-color: #d3b72b;
+    border-color: #f2d027ff;
+}
+
+.profileIcon{
+    background-color: #DFB96D;
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    border: 1px solid #b5b5b5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    transition: all 0.3s ease-in-out;
+}
+.profileIcon:hover{
+    border-color: #686868;
+    background-color: #e8e8e8;
+}

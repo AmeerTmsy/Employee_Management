@@ -86,9 +86,9 @@ function Login(props) {
                 payload,
                 {
                     withCredentials: true,
-                    headers: {
-                        "ngrok-skip-browser-warning": "true"
-                    }
+                    // headers: {
+                    //     "ngrok-skip-browser-warning": "true"
+                    // }
                 }
             )
 
@@ -103,17 +103,16 @@ function Login(props) {
         <>
             <div className='loginDiv_1'>
                 <div className='loginForm'>
-                    <div className='formSec formSec1'>
-                    </div>
+                    {/* <div className='formSec formSec1'>
+                    </div> */}
                     <div className='formSec formSec2'>
                         <div className='profile-pic '>
                             <img
-                                src="https://cdn-icons-png.flaticon.com/512/9706/9706583.png"
-                                alt="profile pick"
-                                className='profilePick'
+                                src="https://res.cloudinary.com/dves9p9u6/image/upload/v1760011913/Main_Logo_1_vd3bb3.png"
+                                alt="euphoricoders logo"
                             />
                         </div>
-                        <h1 className='loginH1'>Login</h1>
+                        <h1 className='loginH1'></h1>
                         <form onSubmit={handleSubmit} noValidate>
                             <div className='passwordFieldWrap'>
                                 <div className='passDiv'>
@@ -161,7 +160,7 @@ function Login(props) {
                                 <button
                                     style={{ display: 'flex', justifyContent: 'center', gap: '1em', padding: '0.5em 1em', width: '100%' }}
                                     onClick={() => {
-                                        window.location.href = "http://localhost:3000/api/auth/google";
+                                        window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`;
                                     }}
                                 >
                                     <img src={googleIcon} alt="google icon" />Continue with Google

@@ -159,7 +159,7 @@ function AdminAttendance(props) {
                         <select
                             value={currentYear}
                             onChange={(e) => setCurrentYear(Number(e.target.value))}
-                            style={{ marginLeft: "1em", paddingRight: "1em", paddingLeft: '1em', border: '0px ' }}
+                            style={{ marginLeft: "1em", paddingRight: "1em", paddingLeft: '1em', border: '0px ', backgroundColor: 'transparent', fontSize: '1.2em' }}
                         >
                             {Array.from({ length: todayYear - 2020 + 1 }, (_, i) => todayYear - i).map((year) => (
                                 <option key={year} value={year}>{year}</option>

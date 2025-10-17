@@ -5,11 +5,11 @@
 }
 
 .projectsList{
-    margin: 2em 2em 0em 2em;
+    margin: 1.3em 2em 0em 2em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0 1em;
+    padding: 0 0.3em;
     border-radius: 2.5px;
     box-shadow: -3px 0px 10px #c4c4c4, 1px -3px 10px #c4c4c4;
 }
@@ -29,6 +29,9 @@
 .projectTitle{
     font-size: 1.2em;
     font-weight: 500;
+}
+.projectTitle h4:nth-child(2){
+    margin: 0  auto;
 }
 .projectTitle h4:last-child{
     margin-left: auto;

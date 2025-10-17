@@ -16,7 +16,7 @@ function Taskes(props) {
     const [expandedRow, setExpandedRow] = useState(null);
 
     return (
-        <div>
+        <div style={{height: '90vh', position: 'relative'}}>
             {user.userType === 'admin' && <AdminTask />}
             {user.userType === 'employee' && <EmployeeTask />}
         </div>
